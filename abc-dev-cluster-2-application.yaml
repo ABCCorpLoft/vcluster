@@ -1,0 +1,37 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: abc-dev-cluster-2
+  namespace: argocd
+spec:
+  destination:
+    name: ""
+    namespace: abc-dev-cluster-2
+    server: "https://kubernetes.default.svc"
+  source:
+    path: ""
+    repoURL: "https://charts.loft.sh"
+    targetRevision: 0.22.3
+    chart: vcluster
+    helm:
+      releaseName: abc-dev-cluster-2
+      values: |
+        sync:
+          toHost:
+            ingresses:
+              enabled: true
+        controlPlane:
+          coredns:
+            enabled: true
+        external:
+          platform:
+            autoSleep:
+              afterInactivity: 360
+  project: abc-dev-project-1
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
