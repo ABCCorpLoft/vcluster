@@ -2,12 +2,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: abc-dev-cluster-3
+  name: abc-dev-cluster-4
   namespace: argocd
 spec:
   destination:
     name: ""
-    namespace: abc-dev-cluster-3
+    namespace: abc-dev-cluster-4
     server: "https://kubernetes.default.svc"
   source:
     path: ""
@@ -15,7 +15,7 @@ spec:
     targetRevision: 0.22.3
     chart: vcluster
     helm:
-      releaseName: abc-dev-cluster-3
+      releaseName: abc-dev-cluster-4
       values: |
         sync:
           toHost:
