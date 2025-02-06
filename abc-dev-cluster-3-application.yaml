@@ -27,7 +27,7 @@ spec:
         external:
           platform:
             autoSleep:
-              afterInactivity: 240
+              afterInactivity: 300
   project: abc-dev-project-1
   syncPolicy:
     automated:
